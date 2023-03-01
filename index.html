@@ -51,11 +51,13 @@
           </p>
         </section>
         <section class="main-content">
+          <form action="">
           <div class="extract-wrapper">
+
             <div class="extract-container extract-container__left">
               <h2>Teks</h2>
               <div>
-                <textarea class="teks-input"></textarea>
+                <textarea class="teks-input" name="text"></textarea>
                 <div class="teks-input__count"><span>0</span> kata</div>
               </div>
             </div>
@@ -86,9 +88,10 @@
               </div>
               <div class="flex-container">
                 <label for="kalimat-utama">Kalimat Utama : </label>
+                <input type="hidden" value="" name="kalimat_utama">
                 <div class="wrapper">
                   <div class="select-btn">
-                    <span>Pilih pengaturan</span>
+                    <span id="kalimat-utama">Pilih pengaturan</span>
                     <i class="fa-solid fa-angle-down"></i>
                   </div>
                   <div class="content">
@@ -98,9 +101,10 @@
               </div>
               <div class="flex-container">
                 <label for="kalimat-utama-sbg">Kalimat Utama Sebagai : </label>
+                <input type="hidden" value="" name="kalimat_utama_sbg">
                 <div class="wrapper">
                   <div class="select-btn">
-                    <span>Pilih pengaturan</span>
+                    <span id="kalimat-utama-sbg">Pilih pengaturan</span>
                     <i class="fa-solid fa-angle-down"></i>
                   </div>
                   <div class="content">
@@ -113,6 +117,7 @@
               <button id="submit-btn" type="button">Start Summarization</button>
             </div>
           </div>
+          </form>
         </section>
       </section>
       <section class="section section-second">

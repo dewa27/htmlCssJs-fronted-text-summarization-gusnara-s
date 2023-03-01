@@ -8,9 +8,19 @@ const wrapper = document.querySelectorAll(".wrapper"),
 
 const percentageRange = document.querySelector(".slider");
 const percentageValueContainer = document.querySelector("#percentage-value");
-const kalimatUtamaOptions = ["Awal Kalimat", "Akhir Kalimat"];
-const kalimatUtamaSbgOptions = ["Premise", "Hipotesis"];
-
+const kalimatUtamaOptions = [
+  { text: "Awal Kalimat", value: 0 },
+  { text: "Akhir Kalimat", value: 1 },
+];
+const kalimatUtamaSbgOptions = [
+  { text: "Premise", value: 0 },
+  { text: "Hipotesis", value: 1 },
+];
+const inputKalimatUtama = document.querySelector('input[name="kalimat_utama"]');
+const inputKalimatUtamaSbg = document.querySelector(
+  'input[name="kalimat_utama_sbg"]'
+);
+const form = document.querySelector("form");
 //textarea word counting and height adjustment
 textareas.forEach((textarea) => {
   textarea.addEventListener("input", function () {
@@ -26,7 +36,7 @@ function addOptionsUtama(selectedOptions) {
   options[0].innerHTML = "";
   kalimatUtamaOptions.forEach((option) => {
     let isSelected = option == selectedOptions ? "selected" : "";
-    let li = `<li onclick="updateNameUtama(this)" class="${isSelected}">${option}</li>`;
+    let li = `<li data-value="${option.value}" onclick="updateNameUtama(this)" class="${isSelected}">${option.text}</li>`;
     options[0].insertAdjacentHTML("beforeend", li);
   });
 }
@@ -35,7 +45,7 @@ function addOptionsUtamaSbg(selectedOptions) {
   options[1].innerHTML = "";
   kalimatUtamaSbgOptions.forEach((option) => {
     let isSelected = option == selectedOptions ? "selected" : "";
-    let li = `<li onclick="updateNameUtamaSbg(this)" class="${isSelected}">${option}</li>`;
+    let li = `<li data-value="${option.value}" onclick="updateNameUtamaSbg(this)" class="${isSelected}">${option.text}</li>`;
     options[1].insertAdjacentHTML("beforeend", li);
   });
 }
@@ -43,11 +53,13 @@ function updateNameUtama(selectedLi) {
   addOptionsUtama(selectedLi.innerText);
   wrapper[0].classList.remove("active");
   selectBtn[0].firstElementChild.innerText = selectedLi.innerText;
+  inputKalimatUtama.value = selectedLi.dataset.value;
 }
 function updateNameUtamaSbg(selectedLi) {
   addOptionsUtama(selectedLi.innerText);
   wrapper[1].classList.remove("active");
   selectBtn[1].firstElementChild.innerText = selectedLi.innerText;
+  inputKalimatUtamaSbg.value = selectedLi.dataset.value;
 }
 //call the function
 addOptionsUtama();
@@ -67,7 +79,10 @@ percentageRange.addEventListener("input", function () {
 
 //submit button on click event. your request code to Machine Learning / server goes here
 submitBtn.addEventListener("click", function () {
-  // $("#fullpage").moveDown();
+  let formData = new FormData(form);
+  for (var pair of formData.entries()) {
+    console.log(pair[0] + ", " + pair[1]);
+  }
   showLoading();
   //make request to server here
   setTimeout(function () {
