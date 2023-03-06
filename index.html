@@ -52,71 +52,74 @@
         </section>
         <section class="main-content">
           <form action="">
-          <div class="extract-wrapper">
-
-            <div class="extract-container extract-container__left">
-              <h2>Teks</h2>
-              <div>
-                <textarea class="teks-input" name="text"></textarea>
-                <div class="teks-input__count"><span>0</span> kata</div>
-              </div>
-            </div>
-            <div class="extract-container extract-container__right">
-              <h2>Extractive Text Summarization</h2>
-              <div>
-                <textarea class="teks-input"></textarea>
-                <div class="teks-input__count"><span>0</span> kata</div>
-              </div>
-            </div>
-          </div>
-          <div class="extract-detail">
-            <div class="extract-detail__setting">
-              <div class="slider-container flex-container">
-                <label for="percentage">Persentase Peningkatan :</label>
+            <div class="extract-wrapper">
+              <div class="extract-container extract-container__left">
+                <h2>Teks</h2>
                 <div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="100"
-                    value="50"
-                    class="slider"
-                    id="percent-range"
-                    name="percentage"
-                  />
-                  <p><span id="percentage-value">50</span>%</p>
+                  <textarea class="teks-input" name="text"></textarea>
+                  <div class="teks-input__count"><span>0</span> kata</div>
                 </div>
               </div>
-              <div class="flex-container">
-                <label for="kalimat-utama">Kalimat Utama : </label>
-                <input type="hidden" value="" name="kalimat_utama">
-                <div class="wrapper">
-                  <div class="select-btn">
-                    <span id="kalimat-utama">Pilih pengaturan</span>
-                    <i class="fa-solid fa-angle-down"></i>
-                  </div>
-                  <div class="content">
-                    <ul class="options"></ul>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-container">
-                <label for="kalimat-utama-sbg">Kalimat Utama Sebagai : </label>
-                <input type="hidden" value="" name="kalimat_utama_sbg">
-                <div class="wrapper">
-                  <div class="select-btn">
-                    <span id="kalimat-utama-sbg">Pilih pengaturan</span>
-                    <i class="fa-solid fa-angle-down"></i>
-                  </div>
-                  <div class="content">
-                    <ul class="options"></ul>
-                  </div>
+              <div class="extract-container extract-container__right">
+                <h2>Extractive Text Summarization</h2>
+                <div>
+                  <textarea class="teks-input" id="summary"></textarea>
+                  <div class="teks-input__count"><span>0</span> kata</div>
                 </div>
               </div>
             </div>
-            <div class="extract-detail__action">
-              <button id="submit-btn" type="button">Start Summarization</button>
+            <div class="extract-detail">
+              <div class="extract-detail__setting">
+                <div class="slider-container flex-container">
+                  <label for="percentage">Persentase Peningkatan :</label>
+                  <div>
+                    <input
+                      type="range"
+                      min="1"
+                      max="100"
+                      value="50"
+                      class="slider"
+                      id="percent-range"
+                      name="persentase"
+                    />
+                    <p><span id="percentage-value">50</span>%</p>
+                  </div>
+                </div>
+                <div class="flex-container">
+                  <label for="kalimat-utama">Kalimat Utama : </label>
+                  <input type="hidden" value="" name="awal_akhir" />
+                  <div class="wrapper">
+                    <div class="select-btn">
+                      <span id="kalimat-utama">Pilih pengaturan</span>
+                      <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <div class="content">
+                      <ul class="options"></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-container">
+                  <label for="kalimat-utama-sbg"
+                    >Kalimat Utama Sebagai :
+                  </label>
+                  <input type="hidden" value="" name="posisi" />
+                  <div class="wrapper">
+                    <div class="select-btn">
+                      <span id="kalimat-utama-sbg">Pilih pengaturan</span>
+                      <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <div class="content">
+                      <ul class="options"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="extract-detail__action">
+                <button id="submit-btn" type="button">
+                  Start Summarization
+                </button>
+              </div>
             </div>
-          </div>
           </form>
         </section>
       </section>
@@ -136,16 +139,17 @@
         </section>
         <section class="main-content">
           <div class="table-wrapper">
-            <table>
+            <table id="detail-table">
               <thead>
                 <tr>
+                  <th>No</th>
                   <th>Premis</th>
                   <th>Hipotesis</th>
                   <th>Percentage</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <!-- <tr>
                   <td>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Corrupti expedita beatae quis qui odit officia et dolorum
@@ -194,16 +198,7 @@
                   </td>
                   <td>                    Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                   <td>50%</td>
-                </tr>
-                  <td>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Corrupti expedita beatae quis qui odit officia et dolorum
-                    unde. Quas, earum impedit! Nostrum excepturi qui distinctio
-                    illo numquam corporis quis id!
-                  </td>
-                  <td>1/5/2021</td>
-                  <td>50%</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -213,5 +208,6 @@
     <footer></footer>
   </body>
 
+  <script src="https://unpkg.com/axios@1.2.1/dist/axios.min.js"></script>
   <script src="script.js"></script>
 </html>
