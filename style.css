@@ -31,12 +31,13 @@ section:not(.section) {
 }
 .page-info__title {
   text-align: center;
+  font-size: 1em;
 }
 
 .page-info__description {
-  font-size: 0.875em;
+  font-size: 0.8em;
   margin-top: 1em;
-  text-align: center;
+  text-align: justify;
 }
 .extract-wrapper {
   border-radius: 10px;

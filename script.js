@@ -10,12 +10,12 @@ const detailTable = document.querySelector("#detail-table tbody");
 const percentageRange = document.querySelector(".slider");
 const percentageValueContainer = document.querySelector("#percentage-value");
 const kalimatUtamaOptions = [
-  { text: "Awal Kalimat", value: 0 },
-  { text: "Akhir Kalimat", value: 1 },
+  { text: "Awal Kalimat", value: 1 },
+  { text: "Akhir Kalimat", value: 2 },
 ];
 const kalimatUtamaSbgOptions = [
-  { text: "Premise", value: 0 },
-  { text: "Hipotesis", value: 1 },
+  { text: "Premise", value: 1 },
+  { text: "Hipotesis", value: 2 },
 ];
 const inputKalimatUtama = document.querySelector('input[name="awal_akhir"]');
 const inputKalimatUtamaSbg = document.querySelector('input[name="posisi"]');
@@ -106,9 +106,9 @@ function renderResult(data) {
     detailTable.innerHTML += `<tr>
     <td>${key + 1}</td>
     <td>
-  ${row[1]}
+  ${row[0]}
     </td>
-    <td>${row[0]}</td>
+    <td>${row[1]}</td>
     <td>${row[2]}%</td>
   </tr>`;
   });
